@@ -27,14 +27,14 @@ class Rectangle:
     # the __eq__() method checks if the object passed as parameter other
     # is an instance of the class Rectangle and if the value of the base
     # and height of the current object (self) is equal to the corresponding
-    # values of the other object (other) . If the two objects are considered
+    # values of the other object (__other) . If the two objects are considered
     # equal, the method returns True, otherwise it returns False.
-    def __eq__(self, other: object) -> bool:
-        if self is other:
+    def __eq__(self, __other: object) -> bool:
+        if self is __other:
             return True
-        if not isinstance(other, Rectangle):
+        if not isinstance(__other, Rectangle):
             return False
-        return self._base == other._base and self._height == other._height
+        return self._base == __other._base and self._height == __other._height
 
     # The __hash__() method returns a hash value of the tuple containing
     # the base and height values of the current object.
