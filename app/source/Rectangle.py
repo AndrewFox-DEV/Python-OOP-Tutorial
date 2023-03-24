@@ -24,6 +24,23 @@ class Rectangle:
     def __str__(self) -> str:
         return f'Rectangle: {{\n\tb: {self.get_base()}\n\th: {self.get_height()}\n}}'
     
+    # the __eq__() method checks if the object passed as parameter other
+    # is an instance of the class Rectangle and if the value of the base
+    # and height of the current object (self) is equal to the corresponding
+    # values of the other object (other) . If the two objects are considered
+    # equal, the method returns True, otherwise it returns False.
+    def __eq__(self, other: object) -> bool:
+        if self is other:
+            return True
+        if not isinstance(other, Rectangle):
+            return False
+        return self._base == other._base and self._height == other._height
+
+    # The __hash__() method returns a hash value of the tuple containing
+    # the base and height values of the current object.
+    def __hash__(self) -> int:
+        return hash((self._base, self._height))
+    
     # PROPERTY DECORATOR
     # @property is a Python built-in decorator, which is used to give "special"
     # functionality to certain methods and make them act as getters, setters,
