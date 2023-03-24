@@ -18,11 +18,11 @@ class Rectangle:
         self._base = base
         self._height = height
 
-    # We call the method to render class attributes of the object (or instance);
-    # one tip, use the f-string, as I wrote the string is to
-    # make a clean output and nice to display
+    # We call the method to render class attributes of the object
+    # (or instance) with getters; one tip, use the f-string, as I
+    #  wrote the string is to create a clean and nice to view output
     def __str__(self) -> str:
-        return f'Rectangle: {{\n\tb: {self._base}\n\th: {self._height}\n}}'
+        return f'Rectangle: {{\n\tb: {self.get_base()}\n\th: {self.get_height()}\n}}'
     
     # PROPERTY DECORATOR
     # @property is a Python built-in decorator, which is used to give "special"
