@@ -12,4 +12,3 @@ print(rectangle.calculate_area())
 # We will use the __str__() method to print the class attributes,
 # but if it weren't there we would see the class instance
 # address in memory
-
