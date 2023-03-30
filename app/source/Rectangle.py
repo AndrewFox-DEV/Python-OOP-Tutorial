@@ -17,13 +17,6 @@ class Rectangle:
     def __init__(self, base: float, height: float) -> None:
         self._base = base
         self._height = height
-    
-    # When called with a copy method of the copy module, __copy__() method returns
-    # a new instance of the Rectangle class that contains copies of the original instance's
-    # attributes. Once the copy constructor is defined, an instance of the class can be created using
-    # the copy constructor by calling a copy method of the copy module and passing it the instance as an argument. 
-    def __copy__(self):
-        return Rectangle(self._base, self._height)
 
     # We call the method to render class attributes of the object
     # (or instance) with getters; one tip, use the f-string, as I
