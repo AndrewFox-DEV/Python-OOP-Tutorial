@@ -1,3 +1,4 @@
+import copy
 from math import *
 
 class Rectangle:
@@ -23,6 +24,13 @@ class Rectangle:
     def __init__(self, base: float, height: float) -> None:
         self._base = base
         self._height = height
+
+    # Note that we added a copy() method that returns a deep copy of the current
+    # Rectangle object using the copy module's deepcopy() function. This creates
+    # a new object with the same base and height values as the original, but
+    # with a different memory address.
+    def copy(self) -> 'Rectangle':
+        return copy.deepcopy(self)
 
     # We call the method to render class attributes of the object
     # (or instance) with getters; one tip, use the f-string, as I
