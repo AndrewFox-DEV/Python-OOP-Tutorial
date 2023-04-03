@@ -1,3 +1,5 @@
+from math import *
+
 class Rectangle:
     # It must necessarily be the first instruction of the class
     '''RECTANGLE CLASS\n
@@ -6,6 +8,10 @@ class Rectangle:
     # Define private class attributes and their type
     _base: float
     _height: float
+
+    # METHODS
+    # In Python, methods are functions defined inside a class,
+    # and are used to manipulate the data attributes of instances of the class.
 
     # Call the constructor method, it's a special method that
     # allows us to define class attributes the value assignment
@@ -24,7 +30,7 @@ class Rectangle:
     def __str__(self) -> str:
         return f'Rectangle: {{\n\tb: {self.get_base()}\n\th: {self.get_height()}\n}}'
     
-    # the __eq__() method checks if the object passed as parameter other
+    # The __eq__() method checks if the object passed as parameter other
     # is an instance of the class Rectangle and if the value of the base
     # and height of the current object (self) is equal to the corresponding
     # values of the other object (__other) . If the two objects are considered
@@ -56,33 +62,60 @@ class Rectangle:
     # As mentioned, a setter is used to set or modify a value, so simply
     # the class attribute will be equal to a value
     # (which will be defined as a method argument)
-    # STATICMETHOD DECORATOR
-    # The @staticmethod is a built-in decorator that defines a static
-    # method in the class in Python. A static method doesn't receive any
-    # reference argument whether it is called by an instance of
-    # a class or by the class itself. It's not necessary!
-    @property
     def get_base(self) -> float:
         return self._base
     
-    @property
     def set_base(self, base: float) -> None:
         self._base = base
-    
-    @property
+        
     def get_height(self) -> float:
         return self._height
-    
-    @property
+
     def set_height(self, height: float) -> None:
         self.height = height
-
-    @staticmethod
+    
+    # STATIC METHOD DECORATOR AND CLASS METHOD DECORATOR
+    # @staticmethod and @classmethod are decorators that
+    # can be applied to methods to give them special behavior.
+    # STATIC METHOD DECORATOR
+    # A method decorated with @staticmethod is a static method,
+    # which means it can be called on the class itself without
+    # the need for an instance of the class. This method cannot modify
+    # the instance state or class state in any way. It is often used as
+    # a utility function for the class.
+    # CLASS METHOD DECORATOR
+    # A method decorated with @classmethod is a class method,
+    # which means it is bound to the class and can access
+    # and modify the class state. It takes a cls parameter
+    # as its first argument, which refers to the class on which the
+    # method was called. Class methods are often used as factory
+    # methods for creating instances of the class.
     def calculate_perimeter(base: float, height: float) -> float:
         perimeter = (base + height) * 2
         return perimeter
-
-    @staticmethod
+    
     def calculate_area(base: float, height: float) -> float:
         area = base * height
         return area
+
+    # One meaningful method that could use the @staticmethod
+    # decorator in the Rectangle class could be calculate_diagonal().
+    # This method could calculate the diagonal of a rectangle with
+    # the given base and height values. Since this method does not depend
+    # on any instance attributes or methods, it could be a static method.
+    @staticmethod
+    def calculate_diagonal(base: float, height: float) -> float:
+        return sqrt(pow(base, 2) + pow(height, 2))
+    
+    # A meaningful method that could use the @classmethod
+    # decoratorin the Rectangle class, we could implement
+    # a from_square() method. This method could take the
+    # area of ​​a square and create a rectangle with the same
+    # area but a different base and height. Since this method
+    # needs to access and modify class attributes,
+    # it could be a class method.
+    @classmethod
+    def from_square(cls, side: float) -> 'Rectangle':
+        base = side
+        height = side / 2
+        return cls(base, height)
