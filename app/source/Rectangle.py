@@ -72,7 +72,7 @@ class Rectangle:
         return self._height
 
     def set_height(self, height: float) -> None:
-        self.height = height
+        self._height = height
     
     # STATIC METHOD DECORATOR AND CLASS METHOD DECORATOR
     # @staticmethod and @classmethod are decorators that
